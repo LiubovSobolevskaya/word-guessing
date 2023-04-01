@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start;
+    background: linear-gradient(0deg, blue 0%, white 63%)
+}
+
+.reset { 
+    font-size: 18px;
+    height: 30px;
+    line-height: 100vh;
+    margin-top: 20px;
+}
+
+.statistics {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+button {
+    background: radial-gradient(circle, yellow 0%, rgb(198, 105, 23) 100%);
+}
