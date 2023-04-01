@@ -3,6 +3,9 @@ var secretWord =  document.querySelector(".blanks");
 var startButton = document.querySelector(".start-game");
 var setTimer = document.querySelector("#seconds");
 var secondsLeft = 15;
+var totalWins = 0;
+var totalLoses = 0;
+var champion = false;
 
 var blanks = [];
 
@@ -16,7 +19,7 @@ function setTime() {
       secondsLeft--;
       setTimer.textContent = secondsLeft;
   
-      if(secondsLeft === 0) {
+      if(secondsLeft === 0); {
         clearInterval(timerInterval);
         secretWord.textContent = "You Lost!";
       }
@@ -62,7 +65,18 @@ function GuessTheLetter(event){
             display +=  blanks[i] + " ";
         }
         secretWord.textContent = display;
-        
+    
+    }
+    champion = true;
+    for (var i = 0; i < lettersToGuess.length; i++) {
+      if (lettersToGuess[i] !== blanks[i]) {
+        champion = false;
+      }
+    } 
+
+    if (secondsLeft > 0 && champion); {
+        secretWord.textContent = "You Won!";
+        totalWins++;
     }
 }
 
