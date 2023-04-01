@@ -6,27 +6,23 @@ var secondsLeft = 15;
 var totalWins = 0;
 var totalLoses = 0;
 var champion = false;
-
+var timerInterval;
 var blanks = [];
 
 var lettersToGuess = [];
 
-
-
 function setTime() {
-   
-    var timerInterval = setInterval(function() {
+      timerInterval= setInterval(function() {
       secondsLeft--;
       setTimer.textContent = secondsLeft;
-  
-      if(secondsLeft === 0); {
-        clearInterval(timerInterval);
+      console.log(secondsLeft === 0);
+      if(secondsLeft === 0){
         secretWord.textContent = "You Lost!";
+        clearInterval(timerInterval);
+        totalLosses++;
       }
     }, 1000);
   }
-
-
 
 
 function startTheGame() {
@@ -73,10 +69,13 @@ function GuessTheLetter(event){
         champion = false;
       }
     } 
-
-    if (secondsLeft > 0 && champion); {
+    console.log(champion);
+    if (secondsLeft > 0 && champion){
+      console.log(champion &&  secondsLeft > 0);
         secretWord.textContent = "You Won!";
+        clearInterval(timerInterval);
         totalWins++;
+        
     }
 }
 
