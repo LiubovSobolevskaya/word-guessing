@@ -1,6 +1,7 @@
 var wordsToChoosefrom = ['cat', 'dog', 'parrot'];
 var secretWord =  document.querySelector(".blanks");
 var startButton = document.querySelector(".start-game");
+var resetButton = document.querySelector(".reset");
 var setTimer = document.querySelector("#seconds");
 var secondsLeft = 15;
 var totalWins = 0;
@@ -23,7 +24,7 @@ function setTime() {
         secretWord.textContent = "You Lost!";
         clearInterval(timerInterval);
         totalLosses++; 
-        localStorage.setItem("loses", totalLosses);
+        localStorage.setItem("losses", totalLosses);
         lossCount.textContent = totalLosses;
       }
     }, 1000);
@@ -32,7 +33,7 @@ function setTime() {
 function setWinsLosses() {
 
     var SavedWins = localStorage.getItem("wins");
-    var SavedLosses = localStorage.getItem("loses");
+    var SavedLosses = localStorage.getItem("losses");
     if (SavedWins !== null) {
       winCount.textContent = SavedWins;
       totalWins =  SavedWins;
@@ -73,6 +74,18 @@ function startTheGame() {
 }
 
 startButton.addEventListener("click", startTheGame );
+
+resetButton.addEventListener("click", resetButtonPress );
+
+
+
+function resetButtonPress() {
+  localStorage.setItem("losses", 0);
+  localStorage.setItem("wins", 0);
+  winCount.textContent = 0;
+  lossCount.textContent = 0;
+}
+
 
 
 function GuessTheLetter(event){
