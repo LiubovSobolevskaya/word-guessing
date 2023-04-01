@@ -1,13 +1,14 @@
-var wordsToChoosefrom = ['сat', 'dog', 'parrot']
+var wordsToChoosefrom = ['cat', 'dog', 'parrot']
 var secretWord =  document.querySelector(".blanks");
 var startButton = document.querySelector(".start-game");
 
 var blanks = [];
 
 var lettersToGuess = [];
-var gameStarted = false;
+
 function startTheGame() {
-    gameStarted = true;
+    blanks = [];
+    lettersToGuess = [];
     secretWord.textContent = ""
     var wordToGuess  = wordsToChoosefrom[Math.floor(Math.random() * wordsToChoosefrom.length)];
     console.log(wordToGuess)
@@ -25,7 +26,7 @@ startButton.addEventListener("click", startTheGame );
 
 
 function GuessTheLetter(event){
-    console.log("hello!")
+    console.log(lettersToGuess);
     var keyPress = event.key;
     if (lettersToGuess.includes(keyPress))
     {
