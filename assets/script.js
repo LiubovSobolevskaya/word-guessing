@@ -4,13 +4,13 @@ var startButton = document.querySelector(".start-game");
 var setTimer = document.querySelector("#seconds");
 var secondsLeft = 15;
 var totalWins = 0;
-var totalLoses = 0;
+var totalLosses = 0;
 var champion = false;
 var timerInterval;
 var blanks = [];
-var winCount = document.querySelector("win");
-var lossCount = document.querySelector("lose");
-setWinsLosses() 
+var winCount = document.querySelector(".win");
+var lossCount = document.querySelector(".lose");
+var gameStarted = false;
 
 var lettersToGuess = [];
 
@@ -18,45 +18,48 @@ function setTime() {
       timerInterval= setInterval(function() {
       secondsLeft--;
       setTimer.textContent = secondsLeft;
-      console.log(secondsLeft === 0);
+      
       if(secondsLeft === 0){
         secretWord.textContent = "You Lost!";
         clearInterval(timerInterval);
         totalLosses++; 
-        localStorage.setItem("loses");
+        localStorage.setItem("loses", totalLosses);
         lossCount.textContent = totalLosses;
       }
     }, 1000);
   }
 
 function setWinsLosses() {
+
     var SavedWins = localStorage.getItem("wins");
     var SavedLosses = localStorage.getItem("loses");
     if (SavedWins !== null) {
       winCount.textContent = SavedWins;
+      totalWins =  SavedWins;
     } else {
       winCount.textContent = 0;
+      totalWins = 0;
     }
     
     if (SavedLosses !== null) {
       lossCount.textContent = SavedLosses;
+      totalLosses = SavedLosses;
     } else {
       lossCount.textContent = 0;
+      totalLosses = 0;
     }
 }
 
 
-
-
-
-
+setWinsLosses();
 
 function startTheGame() {
+    gameStarted = true;
     blanks = [];
     lettersToGuess = [];
     secretWord.textContent = ""
     var wordToGuess  = wordsToChoosefrom[Math.floor(Math.random() * wordsToChoosefrom.length)];
-    console.log(wordToGuess)
+
     lettersToGuess = wordToGuess.split("");
     
     var display = "";
@@ -73,7 +76,7 @@ startButton.addEventListener("click", startTheGame );
 
 
 function GuessTheLetter(event){
-    console.log(lettersToGuess);
+
     var keyPress = event.key;
     if (lettersToGuess.includes(keyPress))
     {
@@ -91,17 +94,21 @@ function GuessTheLetter(event){
     }
     champion = true;
     for (var i = 0; i < lettersToGuess.length; i++) {
-      if (lettersToGuess[i] !== blanks[i]) {
+      if (lettersToGuess.length === 0){
         champion = false;
       }
+      else{
+        if (lettersToGuess[i] !== blanks[i]) {
+          champion = false;
+        }
+      }
     } 
-    console.log(champion);
-    if (secondsLeft > 0 && champion){
-      console.log(champion &&  secondsLeft > 0);
+
+    if (secondsLeft > 0 && champion && gameStarted){
         secretWord.textContent = "You Won!";
         clearInterval(timerInterval);
         totalWins++;
-        localStorage.setItem("wins");
+        localStorage.setItem("wins", totalWins);
         winCount.textContent = totalWins;
         
     }
