@@ -41,3 +41,32 @@ button {
     transition-timing-function: linear;
     margin-top: 0.6em; 
 }
+
+header {    
+    padding: 40px;
+    text-align: center;
+    background: rgb(2, 2, 69);
+    color: white;
+    border-bottom: 30px grey;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+section { 
+    flex: 0, auto;
+    padding: 8px;
+    margin-top: 50px;
+    background-color: white;
+    border-radius: 8px; 
+}
+
+.main-board {
+    width: 55vw;
+    height: 400px;
+}
+
+
