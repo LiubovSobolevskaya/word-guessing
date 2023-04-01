@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 body {
     font-family: Arial;
     margin: 0;
@@ -16,9 +20,8 @@ body {
     font-size: 18px;
     height: 30px;
     /* line-height: 100vh; */
-    margin-top: 20px;
-    position: relative;
-    bottom: 0;
+    margin: 20px;
+
 }
 
 .general-info {
@@ -27,9 +30,10 @@ body {
 }
 
 .statistics {
-    display: flex;
-    justify-content: space-between;
+    display: block;
+    justify-content: space-around;
     margin-top: 16px;
+    padding: 30px;
 }
 
 
@@ -49,6 +53,12 @@ button {
     transition-timing-function: linear;
     margin-top: 0.6em; 
 }
+
+.start-game {
+    position: relative;
+    left: 270px;
+}
+
 
 header {    
     padding: 40px;
@@ -73,8 +83,10 @@ section {
 }
 
 .main-board {
-    width: 55vw;
+    width: 800px;
     height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .box {
@@ -89,7 +101,11 @@ section {
 
 .blanks {
     line-height: 360px;
+    text-align: center;
+    font-size: 80px;
+    margin-bottom: 30px;
 }
+
 
 .timer { 
   height: 240px;
