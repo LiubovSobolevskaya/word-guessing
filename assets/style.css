@@ -15,8 +15,10 @@ body {
 .reset { 
     font-size: 18px;
     height: 30px;
-    line-height: 100vh;
+    /* line-height: 100vh; */
     margin-top: 20px;
+    position: relative;
+    bottom: 0;
 }
 
 .general-info {
@@ -123,10 +125,9 @@ section {
       font-size: 2em;
     }
   
-    .reset-button {
+    .just-reset {
       font-size: 12px;
       width: 20ox;
-      
     }
   
     .timer {
