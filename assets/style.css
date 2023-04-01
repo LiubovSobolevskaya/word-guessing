@@ -55,8 +55,8 @@ button {
 }
 
 .start-game {
-    position: relative;
-    left: 270px;
+   margin: 35px auto;
+
 }
 
 
@@ -78,17 +78,21 @@ section {
     flex: 0, auto;
     /* padding: 8px; */
     margin-top: 50px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 8px; 
 }
 
-.main-board {
-    width: 800px;
-    height: 400px;
+.main-area {
+
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
-
+.main-board{
+    max-width: 800px;
+    max-height: 400px;
+    background-color: bisque;
+}
 .box {
     background: radial-gradient (circle, rgb(221, 33, 4) 0%, rgb(87, 53, 3) 100%);
     border: 1px solid #eceff1;
@@ -130,7 +134,7 @@ section {
     }
   
     section {
-      background-color: white;
+   
       margin: 20px auto;
       width: 92vw;
     }
@@ -148,5 +152,8 @@ section {
   
     .timer {
       height: 200px;
+    }
+    .blanks{
+      font-size: 50px;
     }
   }
