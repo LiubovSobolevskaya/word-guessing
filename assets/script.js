@@ -29,7 +29,7 @@ function setTime() {
         lettersToGuess = [];
         localStorage.setItem("losses", totalLosses);
         lossCount.textContent = totalLosses;
-        startButton.disabled = true;
+        startButton.disabled = false;
         
       }
       if (secondsLeft > 0 && champion){
