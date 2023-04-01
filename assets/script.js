@@ -8,6 +8,9 @@ var totalLoses = 0;
 var champion = false;
 var timerInterval;
 var blanks = [];
+var winCount = document.querySelector("win");
+var lossCount = document.querySelector("lose");
+setWinsLosses() 
 
 var lettersToGuess = [];
 
@@ -19,10 +22,33 @@ function setTime() {
       if(secondsLeft === 0){
         secretWord.textContent = "You Lost!";
         clearInterval(timerInterval);
-        totalLosses++;
+        totalLosses++; 
+        localStorage.setItem("loses");
+        lossCount.textContent = totalLosses;
       }
     }, 1000);
   }
+
+function setWinsLosses() {
+    var SavedWins = localStorage.getItem("wins");
+    var SavedLosses = localStorage.getItem("loses");
+    if (SavedWins !== null) {
+      winCount.textContent = SavedWins;
+    } else {
+      winCount.textContent = 0;
+    }
+    
+    if (SavedLosses !== null) {
+      lossCount.textContent = SavedLosses;
+    } else {
+      lossCount.textContent = 0;
+    }
+}
+
+
+
+
+
 
 
 function startTheGame() {
@@ -75,6 +101,8 @@ function GuessTheLetter(event){
         secretWord.textContent = "You Won!";
         clearInterval(timerInterval);
         totalWins++;
+        localStorage.setItem("wins");
+        winCount.textContent = totalWins;
         
     }
 }
