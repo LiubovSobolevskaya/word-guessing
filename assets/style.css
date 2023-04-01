@@ -69,4 +69,28 @@ section {
     height: 400px;
 }
 
+.box {
+    background: radial-gradient (circle, rgb(245, 245, 193) 0%, rgb(87, 53, 3) 100%);
+    border: 1px solid #eceff1;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+    rgba(41, 57, 70, 0.15) 0 2px 4px 3px;
+  margin: auto;
+  padding: 20px;
+}
 
+.blanks {
+    line-height: 360px;
+}
+
+.timer { 
+  height: 240px;
+  padding: 10px;
+  background: #3681c7;
+  color: #fff;
+  text-align: center;
+}
+
+.timer-title {
+    
+}
