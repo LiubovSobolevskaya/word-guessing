@@ -1,4 +1,4 @@
-var wordsToChoosefrom = ['cat', 'dog', 'parrot'];
+var wordsToChoosefrom = ['cat', 'dog', 'parrot', 'elephant', 'horse', 'duck', 'rhino'];
 var secretWord =  document.querySelector(".blanks");
 var startButton = document.querySelector(".start-game");
 var resetButton = document.querySelector(".reset");
@@ -12,7 +12,6 @@ var blanks = [];
 var winCount = document.querySelector(".win");
 var lossCount = document.querySelector(".lose");
 var gameStarted = false;
-
 var lettersToGuess = [];
 
 function setTime() {
@@ -22,11 +21,31 @@ function setTime() {
       
       if(secondsLeft === 0){
         secretWord.textContent = "You Lost!";
+        gameStarted = false;
+        champion = false;
         clearInterval(timerInterval);
         totalLosses++; 
+        blanks = [];
+        lettersToGuess = [];
         localStorage.setItem("losses", totalLosses);
         lossCount.textContent = totalLosses;
+        startButton.disabled = true;
+        
       }
+      if (secondsLeft > 0 && champion){
+        gameStarted = false;
+        champion = false;
+        secretWord.textContent = "You Won!";
+        clearInterval(timerInterval);
+        totalWins++;
+        blanks = [];
+        lettersToGuess = [];
+        localStorage.setItem("wins", totalWins);
+        winCount.textContent = totalWins;
+        startButton.disabled = false;
+        
+        
+    }
     }, 1000);
   }
 
@@ -55,9 +74,8 @@ function setWinsLosses() {
 setWinsLosses();
 
 function startTheGame() {
+    startButton.disabled = true;
     gameStarted = true;
-    blanks = [];
-    lettersToGuess = [];
     secretWord.textContent = ""
     var wordToGuess  = wordsToChoosefrom[Math.floor(Math.random() * wordsToChoosefrom.length)];
 
@@ -70,6 +88,7 @@ function startTheGame() {
     }
     secretWord.textContent = display;
     secondsLeft = 15;
+    setTimer.textContent = secondsLeft;
     setTime();
 }
 
@@ -106,25 +125,17 @@ function GuessTheLetter(event){
     
     }
     champion = true;
-    for (var i = 0; i < lettersToGuess.length; i++) {
-      if (lettersToGuess.length === 0){
-        champion = false;
-      }
-      else{
+    if (lettersToGuess.length === 0){
+      champion = false;
+    }
+    else{
+      for (var i = 0; i < lettersToGuess.length; i++) {
         if (lettersToGuess[i] !== blanks[i]) {
           champion = false;
         }
       }
     } 
 
-    if (secondsLeft > 0 && champion && gameStarted){
-        secretWord.textContent = "You Won!";
-        clearInterval(timerInterval);
-        totalWins++;
-        localStorage.setItem("wins", totalWins);
-        winCount.textContent = totalWins;
-        
-    }
 }
 
 document.addEventListener("keyup", GuessTheLetter);
