@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
-    background: linear-gradient(0deg, blue 0%, white 63%)
+    background: linear-gradient(0deg, rgb(252, 178, 5) 0%, white 63%)
 }
 
 .reset { 
@@ -38,9 +38,9 @@ body {
 
 
 button {
-    background: radial-gradient(circle, yellow 0%, rgb(198, 105, 23) 100%);
+    background: radial-gradient(circle, rgb(94, 255, 0) 0%, rgb(198, 52, 23) 100%);
     border-radius: 8px;
-    color: darkblue;
+    color: rgb(96, 43, 3);
     cursor: pointer;
     font-size: 27px;
     letter-spacing: 0.21px;
@@ -63,7 +63,7 @@ button {
 header {    
     padding: 40px;
     text-align: center;
-    background: rgb(2, 2, 69);
+    background: rgb(172, 78, 1);
     color: white;
     border-bottom: 30px grey;
 }
@@ -90,7 +90,7 @@ section {
 }
 
 .box {
-    background: radial-gradient (circle, rgb(245, 245, 193) 0%, rgb(87, 53, 3) 100%);
+    background: radial-gradient (circle, rgb(221, 33, 4) 0%, rgb(87, 53, 3) 100%);
     border: 1px solid #eceff1;
   border-radius: 8px;
   box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
@@ -110,7 +110,7 @@ section {
 .timer { 
   height: 240px;
   /* padding: 10px; */
-  background: #3681c7;
+  background: #f16603;
   color: #fff;
   text-align: center;
 }
@@ -141,9 +141,9 @@ section {
       font-size: 2em;
     }
   
-    .just-reset {
+    .reset {
       font-size: 12px;
-      width: 20ox;
+      width: 20px;
     }
   
     .timer {
