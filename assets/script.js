@@ -15,6 +15,7 @@ var gameStarted = false;
 var lettersToGuess = [];
 
 function setTime() {
+      clearInterval(timerInterval);
       timerInterval= setInterval(function() {
       secondsLeft--;
       setTimer.textContent = secondsLeft;
